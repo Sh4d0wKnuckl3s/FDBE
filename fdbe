@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo " "
 echo "Tool for validate Firebase DB Exposed vulnerability"
 
 while getopts "u:a:o:f:h" OPT;do
@@ -26,11 +27,11 @@ else
 if [ `curl -o /dev/null -s -w "%{http_code}\n" https://$url/$archive.json` = "200" ]
 then
         echo " "
-	echo "[!] - Vulnerable \o/ ! Downloading informations... See your directory"
-        curl -s https://$url/$archive.json -o info.json && cat info.json| jq > $output.json && rm info.json
+	echo "[!] - $url Vulnerable \o/ ! Downloading informations... See your directory"
+        curl -s https://$url/$archive.json -o info.json && cat info.json| jq >> $output.json && rm info.json
 else
         echo " "
-	echo "[+] - It's not vulnerable :("
+	echo "[+] - $url It's not vulnerable :("
 fi
 fi
 
