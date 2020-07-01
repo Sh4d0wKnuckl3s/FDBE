@@ -7,7 +7,7 @@ git clone https://github.com/Sh4d0wKnuckl3s/FDBE.git
 <br>chmod +x fdbe
 <br>./fdbe -u example.firebaseio.com -a users (Default /.js) -o myusersexample
 <br>or
-for n in $(cat domains);do ./fdbe -u $n.firebaseio.com -a users (Default /.js) -o myusersexample;done
+<br>for n in $(cat domains);do ./fdbe -u $n.firebaseio.com -a users (Default /.js) -o myusersexample;done
 
 # Reference
 https://thehackernews.com/2020/05/android-firebase-database-security.html
