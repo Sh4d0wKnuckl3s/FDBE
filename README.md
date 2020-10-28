@@ -2,7 +2,7 @@
 Tool for validate Firebase DB Exposed vulnerability
 
 # Usage:
-git clone https://github.com/Sh4d0wKnuckl3s/FDBE.git
+git clone https://github.com/sknux/FDBE.git
 <br>cd FDBE
 <br>chmod +x fdbe
 <br>./fdbe -u example.firebaseio.com -a users (Default /.js) -o myusersexample
